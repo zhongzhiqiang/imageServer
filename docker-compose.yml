@@ -1,0 +1,12 @@
+version: "3"
+serivces:
+  web:
+    image: hub.zidls.cn/image:latest
+    build: .
+    command: superviord -c /code/deploy/pro_supervisord.conf
+    volumes:
+      - .:/code
+    ports:
+      - 7070:8080
+    network_mode: bridge
+    hostname: image_server
