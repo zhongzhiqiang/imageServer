@@ -1,7 +1,6 @@
 FROM daocloud.io/library/python:2.7.12
 ENV PYTHONUNBUFFERED 1
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN pip install --upgrade pip
 RUN mkdir /code
 WORKDIR /code
 ADD requirements.txt /code

@@ -1,12 +1,15 @@
 version: "3"
-serivces:
-  web:
-    image: hub.zidls.cn/image:latest
+services:
+  dev:
     build: .
-    command: superviord -c /code/deploy/pro_supervisord.conf
+    image: hub.zidls.cn/imageserver:latest
+    command: supervisord -c /code/deploy/pro_supervisord.conf
+    container_name: image_server
     volumes:
       - .:/code
+      - ./docker_local:/data
     ports:
-      - 7070:8080
+      - "9500:9500"
+    environment:
+      - PYTHONPATH=/code
     network_mode: bridge
-    hostname: image_server
