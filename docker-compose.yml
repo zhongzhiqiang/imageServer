@@ -7,7 +7,7 @@ services:
     container_name: image_server
     volumes:
       - .:/code
-      - ./docker_local:/data
+      - /data/imageServer:/data
     ports:
       - "9500:9500"
     environment:
